@@ -221,11 +221,37 @@ public class GitHubService : IGitHubService
     {
         try
         {
+            // Check if we're browsing the root directory
+            var isRootDirectory = string.IsNullOrWhiteSpace(path);
+
             if (!string.IsNullOrEmpty(branch))
             {
-                return await _client.Repository.Content.GetAllContentsByRef(owner, repo, path, branch);
+                // With branch specified
+                if (isRootDirectory)
+                {
+                    // Root directory with branch
+                    return await _client.Repository.Content.GetAllContentsByRef(owner, repo, branch);
+                }
+                else
+                {
+                    // Subdirectory with branch
+                    return await _client.Repository.Content.GetAllContentsByRef(owner, repo, path, branch);
+                }
             }
-            return await _client.Repository.Content.GetAllContents(owner, repo, path);
+            else
+            {
+                // No branch specified
+                if (isRootDirectory)
+                {
+                    // Root directory without branch
+                    return await _client.Repository.Content.GetAllContents(owner, repo);
+                }
+                else
+                {
+                    // Subdirectory without branch
+                    return await _client.Repository.Content.GetAllContents(owner, repo, path);
+                }
+            }
         }
         catch (Exception ex)
         {
