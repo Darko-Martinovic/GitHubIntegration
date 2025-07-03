@@ -9,7 +9,7 @@ namespace GitHubIntegration;
 
 class Program
 {
-    static Task Main(string[] args)
+    static async Task Main(string[] args)
     {
         try
         {
@@ -41,7 +41,7 @@ class Program
 
             // Get the console UI service and start the application
             var consoleUI = host.Services.GetRequiredService<ConsoleUIService>();
-            consoleUI.ShowMainMenu();
+            await consoleUI.ShowMainMenuAsync();
         }
         catch (Exception ex)
         {
@@ -52,7 +52,5 @@ class Program
             Console.WriteLine("- GITHUB_REPO_OWNER: Your GitHub username");
             Console.WriteLine("- GITHUB_REPO_NAME: Default repository name (optional)");
         }
-
-        return Task.CompletedTask;
     }
 }

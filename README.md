@@ -1,8 +1,8 @@
 # 🐙 GitHub Integration Console Application
 
-A powerful .NET console application that provides seamless integration with GitHub's API, offering a beautiful and interactive interface for managing repositories, commits, and file operations.
+A powerful .NET console application that provides seamless integration with GitHub's API using the **Octokit library**, offering a beautiful and interactive interface for managing repositories, commits, pull requests, and advanced GitHub operations.
 
-## ✨ Features (Phase 1)
+## ✨ Features
 
 ### 🔐 Authentication & User Info
 
@@ -27,6 +27,25 @@ A powerful .NET console application that provides seamless integration with GitH
 - Retrieve file content from any repository
 - Support for different branches
 - Display file content in a formatted panel
+
+### 🔀 Pull Request Management
+
+- List pull requests with state filtering (open, closed, all)
+- View detailed pull request information
+- Add comments to pull requests
+- Create pull request reviews (approve, request changes, comment)
+
+### 📊 Repository Intelligence
+
+- View repository statistics (contributors, languages, branches, tags)
+- Browse repository file structure
+- Navigate directories and files with tree view
+
+### 🔍 Search & Discovery
+
+- Search code across repositories
+- Search repositories by query
+- Advanced search with filters and operators
 
 ## 🚀 Quick Start
 
@@ -94,13 +113,28 @@ A powerful .NET console application that provides seamless integration with GitH
 
 ### Main Menu Navigation
 
-The application provides an intuitive console interface with the following options:
+The application provides an intuitive console interface with submenu navigation:
+
+#### Main Menu
 
 1. **🔐 Test Connection & Show User Info** - Validate your GitHub connection and display profile
 2. **📂 List Accessible Repositories** - Browse all repositories you have access to
 3. **📋 List Recent Commits** - View recent commits from any repository
 4. **📝 Get File Content** - Retrieve and display file contents
-5. **❌ Exit** - Close the application
+5. **🧾 Commit Details** - View detailed commit information
+6. **🔀 List Pull Requests** - View pull requests with filtering
+7. **👀 Get Pull Request Details** - View detailed PR information
+8. **📊 Repository Statistics** - View repository analytics
+9. **🔧 PR Management** - Add comments and create reviews
+10. **🔍 Search & Discovery** - Search code and repositories
+11. **📁 Repository Browser** - Browse file structure
+12. **❌ Exit** - Close the application
+
+#### Submenus
+
+- **PR Management**: Add PR comments, Create PR reviews
+- **Search & Discovery**: Code search, Repository search
+- **Repository Browser**: Browse repository structure
 
 ### Example Interactions
 
@@ -144,10 +178,11 @@ The application provides an intuitive console interface with the following optio
 ```
 GitHubIntegration/
 ├── Models/
-│   └── GitHubSettings.cs          # Configuration model
+│   ├── GitHubSettings.cs          # Configuration model
+│   └── RepositoryStatistics.cs    # Repository statistics model
 ├── Services/
 │   ├── IGitHubService.cs          # GitHub service interface
-│   ├── GitHubService.cs           # GitHub API implementation
+│   ├── GitHubService.cs           # GitHub API implementation using Octokit
 │   ├── ConsoleUIService.cs        # Console UI and interactions
 │   └── ConfigurationService.cs    # Configuration management
 ├── Program.cs                     # Application entry point
@@ -181,23 +216,12 @@ The project follows C# coding conventions and uses nullable reference types.
 
 ## 📦 Dependencies
 
-- **Octokit**: GitHub API client library
+- **[Octokit](https://github.com/octokit/octokit.net)**: Official GitHub API client library for .NET
 - **Spectre.Console**: Beautiful console UI components
 - **Microsoft.Extensions.Configuration**: Configuration management
 - **Microsoft.Extensions.DependencyInjection**: Dependency injection container
 - **Microsoft.Extensions.Logging**: Structured logging
-
-## 🔮 Future Phases
-
-### Phase 2 - Core Features
-
-- Commit details and file changes
-- Pull request management
-- Repository statistics and analytics
-
-### Phase 3 - Advanced Features
-
-- Code search functionality
+- **DotNetEnv**: Environment variable loading from .env files
 - Repository browsing and navigation
 - Advanced PR operations
 
