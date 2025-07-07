@@ -19,10 +19,7 @@ public class ConsoleUIService
         while (true)
         {
             AnsiConsole.Clear();
-            AnsiConsole.Write(
-                new FigletText("GitHub Integration")
-                    .Centered()
-                    .Color(Color.Blue));
+           
 
             AnsiConsole.MarkupLine("[bold blue]=== GITHUB INTEGRATION CONSOLE ===[/]");
             AnsiConsole.WriteLine();
