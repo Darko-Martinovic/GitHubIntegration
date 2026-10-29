@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/GitHubIntegration/GitHubIntegration.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/GitHubIntegration.Tests/GitHubIntegration.Tests.csproj" />
+  </Folder>
+</Solution>
